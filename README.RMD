@@ -18,7 +18,7 @@ library(tidyverse)
 Ahora voy a leer los datos
 ```{r}
 library(readr)
-plants <- read_csv("datos.csv")
+plants <- read_csv("Datos.csv", locale=locale(encoding="latin1"))
 ```
 
 
