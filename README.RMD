@@ -21,59 +21,87 @@ library(readr)
 plants <- read_csv("Datos.csv", locale=locale(encoding="latin1"))
 ```
 
-Ahora voy a hacer el código que voy a ejecutar. Exploraremos la base de datos
+Ahora voy a hacer el código que voy a ejecutar. Exploraremos la base de datos. Solo usaremos las columnas de departamento, elevación, especie, longitud y latitud para cada una de las especies.
 ```{r}
 huamachucoensis <- plants %>% 
-  dplyr::filter(ESPECIES == "P. huamachucoensis L.K. Escobar")
+  dplyr::filter(ESPECIES == "P. huamachucoensis L.K. Escobar") %>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 nueva <- plants %>% 
-  dplyr::filter(ESPECIES == "P. nueva")
+  dplyr::filter(ESPECIES == "P. nueva")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 amazonica <- plants %>% 
-  dplyr::filter(ESPECIES == "P. amazonica L. K. Escobar")
+  dplyr::filter(ESPECIES == "P. amazonica L. K. Escobar")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 anastomosans <- plants %>% 
-  dplyr::filter(ESPECIES == "P. anastomosans (Lamb. Ex Dc.) Killip")
+  dplyr::filter(ESPECIES == "P. anastomosans (Lamb. Ex Dc.) Killip")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 cumbalensis <- plants %>% 
-  dplyr::filter(ESPECIES == "P. cumbalensis (H. Karst.) Harms")
+  dplyr::filter(ESPECIES == "P. cumbalensis (H. Karst.) Harms")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 glaberrima <- plants %>% 
-  dplyr::filter(ESPECIES == "P. glaberrima (Juss.) Poir")
+  dplyr::filter(ESPECIES == "P. glaberrima (Juss.) Poir")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 gracilens <- plants %>% 
-  dplyr::filter(ESPECIES == "P. gracilens (A. Gray) Harms")
+  dplyr::filter(ESPECIES == "P. gracilens (A. Gray) Harms")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 kuethiana <- plants %>% 
-  dplyr::filter(ESPECIES == "P. kuethiana B. Esquerre")
+  dplyr::filter(ESPECIES == "P. kuethiana B. Esquerre")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 lanceolata <- plants %>% 
-  dplyr::filter(ESPECIES == "P. lanceolata (Mast.) Harms")
+  dplyr::filter(ESPECIES == "P. lanceolata (Mast.) Harms")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 mandonii <- plants %>% 
-  dplyr::filter(ESPECIES == "P. mandonii (Mast.) Killip")
+  dplyr::filter(ESPECIES == "P. mandonii (Mast.) Killip")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 manicata <- plants %>% 
-  dplyr::filter(ESPECIES == "P. manicata (Juss.) Pers.")
+  dplyr::filter(ESPECIES == "P. manicata (Juss.) Pers.")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 mathewsii <- plants %>% 
-  dplyr::filter(ESPECIES == "P. mathewsii (Mast.) Killip")
+  dplyr::filter(ESPECIES == "P. mathewsii (Mast.) Killip")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 mixta <- plants %>% 
-  dplyr::filter(ESPECIES == "P. mixta L.f.")
+  dplyr::filter(ESPECIES == "P. mixta L.f.")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 parvifolia <- plants %>% 
-  dplyr::filter(ESPECIES == "P. parvifolia (DC.) Harms")
+  dplyr::filter(ESPECIES == "P. parvifolia (DC.) Harms")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 pedunculatis <- plants %>% 
-  dplyr::filter(ESPECIES == "P. peduncularis Cav.")
+  dplyr::filter(ESPECIES == "P. peduncularis Cav.")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 pinnatistipula <- plants %>% 
-  dplyr::filter(ESPECIES == "P. pinnatistipula Cav.")
+  dplyr::filter(ESPECIES == "P. pinnatistipula Cav.")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 runa <- plants %>% 
-  dplyr::filter(ESPECIES == "P. runa L. K Escobar")
+  dplyr::filter(ESPECIES == "P. runa L. K Escobar")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 salpoense <- plants %>% 
-  dplyr::filter(ESPECIES == "P. salpoense S. Leiva & Tantalean")
+  dplyr::filter(ESPECIES == "P. salpoense S. Leiva & Tantalean")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 tarminiana <- plants %>% 
-  dplyr::filter(ESPECIES == "P. tarminiana Coppens y V. E. Barney")
+  dplyr::filter(ESPECIES == "P. tarminiana Coppens y V. E. Barney")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 trifoliata <- plants %>% 
-  dplyr::filter(ESPECIES == "P. trifoliata Cav.")
+  dplyr::filter(ESPECIES == "P. trifoliata Cav.")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 tripartita <- plants %>% 
-  dplyr::filter(ESPECIES == "P. tripartita (Juss.) Poir.")
+  dplyr::filter(ESPECIES == "P. tripartita (Juss.) Poir.")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 trisecta <- plants %>% 
-  dplyr::filter(ESPECIES == "P. trisecta Mast.")
+  dplyr::filter(ESPECIES == "P. trisecta Mast.")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 weberbaueri <- plants %>% 
-  dplyr::filter(ESPECIES == "P. weberbaueri Harms")
+  dplyr::filter(ESPECIES == "P. weberbaueri Harms")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 weigendii <- plants %>% 
-  dplyr::filter(ESPECIES == "P. weigendii T. Ulmer & Schwerdtferger")
+  dplyr::filter(ESPECIES == "P. weigendii T. Ulmer & Schwerdtferger")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 xrosea <- plants %>% 
-  dplyr::filter(ESPECIES == "P. x rosea (H. Karst.) Killip")
+  dplyr::filter(ESPECIES == "P. x rosea (H. Karst.) Killip")%>% 
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 ```
+
+
+
 
 ## GitHub Documents
 
