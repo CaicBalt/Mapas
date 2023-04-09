@@ -9,7 +9,18 @@ knitr::opts_chunk$set(echo = TRUE)
 # Introducción
 En este documento trabajaremos para explorar la identidad de plantas de *tacsonia* del Perú
 
-## Hola mundo
+## trabajando con los datos
+Vamos a cargar las librerias
+```{r}
+library(tidyverse)
+```
+
+Ahora voy a leer los datos
+```{r}
+library(readr)
+plants <- read_csv("datos.csv")
+```
+
 
 ## GitHub Documents
 
