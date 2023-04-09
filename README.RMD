@@ -2,9 +2,10 @@
 title: "Trabajo con mapas"
 output: github_document
 ---
-
+##Instalamos los paquetes
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+install.packages("writexl")
 ```
 # Introducción
 En este documento trabajaremos para explorar la identidad de plantas de *tacsonia* del Perú
@@ -13,6 +14,8 @@ En este documento trabajaremos para explorar la identidad de plantas de *tacsoni
 Vamos a cargar las librerias
 ```{r}
 library(tidyverse)
+library(writexl)
+
 ```
 
 Ahora voy a leer los datos
@@ -23,9 +26,12 @@ plants <- read_csv("Datos.csv", locale=locale(encoding="latin1"))
 
 Ahora voy a hacer el código que voy a ejecutar. Exploraremos la base de datos. Solo usaremos las columnas de departamento, elevación, especie, longitud y latitud para cada una de las especies.
 ```{r}
+getwd()
 huamachucoensis <- plants %>% 
   dplyr::filter(ESPECIES == "P. huamachucoensis L.K. Escobar") %>% 
-  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI) 
+  write_xlsx(huamachucoensis,path = tempfile(fileext = "huamachucoensis.xlsx/"), col_names = TRUE, format_headers = TRUE, use_zip64 = FALSE)
+
 nueva <- plants %>% 
   dplyr::filter(ESPECIES == "P. nueva")%>% 
   dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
@@ -82,7 +88,7 @@ tarminiana <- plants %>%
   dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 trifoliata <- plants %>% 
   dplyr::filter(ESPECIES == "P. trifoliata Cav.")%>% 
-  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
+  dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI) 
 tripartita <- plants %>% 
   dplyr::filter(ESPECIES == "P. tripartita (Juss.) Poir.")%>% 
   dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
@@ -100,6 +106,11 @@ xrosea <- plants %>%
   dplyr::select(ESPECIES, DEPARTA, ELEVA, LONGI, LATI)
 ```
 
+## Creamos archivos shapefile de cada especie
+```{r}
+Resumen <- plants %>% group_by(ESPECIES) %>% 
+  summarise(Resumen, by = n())
+```
 
 
 
