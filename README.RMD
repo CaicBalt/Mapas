@@ -8,21 +8,23 @@ En este documento trabajaremos para explorar la identidad de plantas de *tacsoni
 ## trabajando con los datos
 Vamos a cargar las librerias
 ```{r}
-library(tidyverse)
-library(writexl)
+library(pacman)
+library(ggplot2)
+library(sf)
+require(pacman)
+pacman::p_load(tidyverse, writexl, readr, writexl, raster,
+               readxl, gstat, sp, rworldxtra, sf, rgdal, cowplot, 
+               googleway, ggplot2, ggrepel, ggspatial, rnaturalearth, rnaturalearthdata, lwgeom)
+rm(list = ls())
 
 ```
 
 Ahora voy a leer los datos
 ```{r}
-library(readr)
-library(writexl)
-library(raster)
-library(readxl)
 plants <- read_csv("Datos.csv", locale=locale(encoding="latin1"))
 ```
 
-Ahora voy a hacer el código que voy a ejecutar. Exploraremos la base de datos. Solo usaremos las columnas de departamento, elevación, especie, longitud y latitud para cada una de las especies.
+Exploraremos la base de datos. Solo usaremos las columnas de departamento, elevación, especie, longitud y latitud para cada una de las especies.
 ```{r}
 huamachucoensis <- plants %>% 
   dplyr::filter(ESPECIES == "P. huamachucoensis L.K. Escobar") %>% 
@@ -151,7 +153,7 @@ writexl::write_xlsx(xrosea, "xrosea.xlsx")
 
 ```
 
-##Ahora creamos shapefile todas las especies por separado
+##Ahora creamos shapefile de todas las especies por separado. También plotearemos las ocurrencias en un shapefile de Perú. Por último guardaremos el shapefile de los datos de ocurrencia para cada especie.
 ```{r}
 huamachucoensis <- read_xlsx('huamachucoensis.xlsx')
 xy <- huamachucoensis[,4:5]
@@ -369,6 +371,35 @@ plot(PERU)
 plot(xrosea_shp, ad=TRUE)
 shapefile(xrosea_shp, 'xrosea.shp')
 
+
+```
+## Ahora visualizaremos mejor los mapas de ocurrencia con cada shapefile creados previamente
+```{bash}
+huamachucoensis_sf <- huamachucoensis %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- amazonica %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- anastomosans %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- cumbalensis %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- glaberrima %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- gracilens %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- kuethiana %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- lanceolata %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- mandonii %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- manicata %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- mathewsii %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- mixta %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- nueva %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- parvifolia %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- peduncularis %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- pinnatistipula %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- runa %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- salpoense %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- tarminiana %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- trifoliata %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- tripartita %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- trisecta %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- weberbaueri %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- weigendii %>% st_as_sf(coords = c(4,5), crs = 4326)
+huamachucoensis_sf <- xrosea %>% st_as_sf(coords = c(4,5), crs = 4326)
 
 ```
 
