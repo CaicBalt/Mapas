@@ -21,6 +21,59 @@ library(readr)
 plants <- read_csv("Datos.csv", locale=locale(encoding="latin1"))
 ```
 
+Ahora voy a hacer el código que voy a ejecutar. Exploraremos la base de datos
+```{r}
+huamachucoensis <- plants %>% 
+  dplyr::filter(ESPECIES == "P. huamachucoensis L.K. Escobar")
+nueva <- plants %>% 
+  dplyr::filter(ESPECIES == "P. nueva")
+amazonica <- plants %>% 
+  dplyr::filter(ESPECIES == "P. amazonica L. K. Escobar")
+anastomosans <- plants %>% 
+  dplyr::filter(ESPECIES == "P. anastomosans (Lamb. Ex Dc.) Killip")
+cumbalensis <- plants %>% 
+  dplyr::filter(ESPECIES == "P. cumbalensis (H. Karst.) Harms")
+glaberrima <- plants %>% 
+  dplyr::filter(ESPECIES == "P. glaberrima (Juss.) Poir")
+gracilens <- plants %>% 
+  dplyr::filter(ESPECIES == "P. gracilens (A. Gray) Harms")
+kuethiana <- plants %>% 
+  dplyr::filter(ESPECIES == "P. kuethiana B. Esquerre")
+lanceolata <- plants %>% 
+  dplyr::filter(ESPECIES == "P. lanceolata (Mast.) Harms")
+mandonii <- plants %>% 
+  dplyr::filter(ESPECIES == "P. mandonii (Mast.) Killip")
+manicata <- plants %>% 
+  dplyr::filter(ESPECIES == "P. manicata (Juss.) Pers.")
+mathewsii <- plants %>% 
+  dplyr::filter(ESPECIES == "P. mathewsii (Mast.) Killip")
+mixta <- plants %>% 
+  dplyr::filter(ESPECIES == "P. mixta L.f.")
+parvifolia <- plants %>% 
+  dplyr::filter(ESPECIES == "P. parvifolia (DC.) Harms")
+pedunculatis <- plants %>% 
+  dplyr::filter(ESPECIES == "P. peduncularis Cav.")
+pinnatistipula <- plants %>% 
+  dplyr::filter(ESPECIES == "P. pinnatistipula Cav.")
+runa <- plants %>% 
+  dplyr::filter(ESPECIES == "P. runa L. K Escobar")
+salpoense <- plants %>% 
+  dplyr::filter(ESPECIES == "P. salpoense S. Leiva & Tantalean")
+tarminiana <- plants %>% 
+  dplyr::filter(ESPECIES == "P. tarminiana Coppens y V. E. Barney")
+trifoliata <- plants %>% 
+  dplyr::filter(ESPECIES == "P. trifoliata Cav.")
+tripartita <- plants %>% 
+  dplyr::filter(ESPECIES == "P. tripartita (Juss.) Poir.")
+trisecta <- plants %>% 
+  dplyr::filter(ESPECIES == "P. trisecta Mast.")
+weberbaueri <- plants %>% 
+  dplyr::filter(ESPECIES == "P. weberbaueri Harms")
+weigendii <- plants %>% 
+  dplyr::filter(ESPECIES == "P. weigendii T. Ulmer & Schwerdtferger")
+xrosea <- plants %>% 
+  dplyr::filter(ESPECIES == "P. x rosea (H. Karst.) Killip")
+```
 
 ## GitHub Documents
 
