@@ -4,7 +4,7 @@ Trabajo con mapas
 # Introducción
 
 En este documento trabajaremos para explorar la identidad de plantas de
-tacsonia del Perú
+*tacsonia* del Perú
 
 ## Hola mundo
 
