@@ -15,13 +15,57 @@ require(pacman)
 pacman::p_load(tidyverse, writexl, readr, writexl, raster,
                readxl, gstat, sp, rworldxtra, sf, rgdal, cowplot, 
                googleway, ggplot2, ggrepel, ggspatial, rnaturalearth, rnaturalearthdata, lwgeom)
-rm(list = ls())
+#rm(list = ls())
 
 ```
 
 Ahora voy a leer los datos
 ```{r}
 plants <- read_csv("Datos.csv", locale=locale(encoding="latin1"))
+ambiente <- read_csv("ambiente.csv", locale=locale(encoding="latin1"))
+
+huamachucoensis_ambiente <- read_csv("Passiflora_huamachucoensis_processed_occs.csv", locale=locale(encoding="latin1"))
+
+manicata_ambiente <- read_csv("Passiflora_manicata_processed_occs.csv", locale=locale(encoding="latin1"))
+
+mathewsii_ambiente <- read_csv("Passiflora_mathewsii_processed_occs.csv", locale=locale(encoding="latin1"))
+
+mixta_ambiente <- read_csv("Passiflora_mixta_processed_occs.csv", locale=locale(encoding="latin1"))
+
+parvifolia_ambiente <- read_csv("Passiflora_parvifolia_processed_occs.csv", locale=locale(encoding="latin1"))
+
+peduncularis_ambiente <- read_csv("Passiflora_peduncularis_processed_occs.csv", locale=locale(encoding="latin1"))
+
+pinnatistipula_ambiente <- read_csv("Passiflora_pinnatistipula_processed_occs.csv", locale=locale(encoding="latin1"))
+
+tarminiana_ambiente <- read_csv("Passiflora_tarminiana_processed_occs.csv", locale=locale(encoding="latin1"))
+
+trifoliata_ambiente <- read_csv("Passiflora_trifoliata_processed_occs.csv", locale=locale(encoding="latin1"))
+
+tripartita_ambiente <- read_csv("Passiflora_tripartita_processed_occs.csv", locale=locale(encoding="latin1"))
+
+trisecta_ambiente <- read_csv("Passiflora_trisecta_processed_occs.csv", locale=locale(encoding="latin1"))
+
+weberbaueri_ambiente <- read_csv("Passiflora_weberbaueri_processed_occs.csv", locale=locale(encoding="latin1"))
+
+weigendii_ambiente <- read_csv("Passiflora_weigendii_processed_occs.csv", locale=locale(encoding="latin1"))
+
+xrosea_ambiente <- read_csv("Passiflora_xrosea_processed_occs.csv", locale=locale(encoding="latin1"))
+
+ensifera_ambiente <- read_csv("Ensifera_ensifera_processed_occs.csv", locale=locale(encoding="latin1"))
+
+amazonica_ambiente <- read_csv("Passiflora_amazonica_processed_occs.csv", locale=locale(encoding="latin1"))
+
+anastomosans_ambiente <- read_csv("Passiflora_anastomosans_processed_occs.csv", locale=locale(encoding="latin1"))
+
+cumbalensis_ambiente <- read_csv("Passiflora_cumbalensis_processed_occs.csv", locale=locale(encoding="latin1"))
+
+glaberrima_ambiente <- read_csv("Passiflora_glaberrima_processed_occs.csv", locale=locale(encoding="latin1"))
+
+gracilens_ambiente <- read_csv("Passiflora_gracilens_processed_occs.csv", locale=locale(encoding="latin1"))
+
+
+
 ```
 
 Exploraremos la base de datos. Solo usaremos las columnas de departamento, elevación, especie, longitud y latitud para cada una de las especies.
@@ -162,7 +206,7 @@ proj4string(huamachucoensis_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(huamachucoensis_shp, ad=TRUE)
-shapefile(huamachucoensis_shp, 'huamachucoensis.shp')
+shapefile(huamachucoensis_shp, 'huamachucoensis.shp', overwrite = TRUE)
 
 amazonica <- read_xlsx('amazonica.xlsx')
 xy <- amazonica[,4:5]
@@ -171,7 +215,7 @@ proj4string(amazonica_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(amazonica_shp, ad=TRUE)
-shapefile(amazonica_shp, 'amazonica.shp')
+shapefile(amazonica_shp, 'amazonica.shp', overwrite = TRUE)
 
 anastomosans <- read_xlsx('anastomosans.xlsx')
 xy <- anastomosans[,4:5]
@@ -180,7 +224,7 @@ proj4string(anastomosans_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(anastomosans_shp, ad=TRUE)
-shapefile(anastomosans_shp, 'anastomosans.shp')
+shapefile(anastomosans_shp, 'anastomosans.shp', overwrite = TRUE)
 
 cumbalensis <- read_xlsx('cumbalensis.xlsx')
 xy <- cumbalensis[,4:5]
@@ -189,7 +233,7 @@ proj4string(cumbalensis_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(cumbalensis_shp, ad=TRUE)
-shapefile(cumbalensis_shp, 'cumbalensis.shp')
+shapefile(cumbalensis_shp, 'cumbalensis.shp', overwrite = TRUE)
 
 glaberrima <- read_xlsx('glaberrima.xlsx')
 xy <- glaberrima[,4:5]
@@ -198,7 +242,7 @@ proj4string(glaberrima_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(glaberrima_shp, ad=TRUE)
-shapefile(glaberrima_shp, 'glaberrima.shp')
+shapefile(glaberrima_shp, 'glaberrima.shp', overwrite = TRUE)
 
 gracilens <- read_xlsx('gracilens.xlsx')
 xy <- gracilens[,4:5]
@@ -207,7 +251,7 @@ proj4string(gracilens_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(gracilens_shp, ad=TRUE)
-shapefile(gracilens_shp, 'gracilens.shp')
+shapefile(gracilens_shp, 'gracilens.shp', overwrite = TRUE)
 
 kuethiana <- read_xlsx('kuethiana.xlsx')
 xy <- kuethiana[,4:5]
@@ -216,7 +260,7 @@ proj4string(kuethiana_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(kuethiana_shp, ad=TRUE)
-shapefile(kuethiana_shp, 'kuethiana.shp')
+shapefile(kuethiana_shp, 'kuethiana.shp', overwrite = TRUE)
 
 lanceolata <- read_xlsx('lanceolata.xlsx')
 xy <- lanceolata[,4:5]
@@ -225,7 +269,7 @@ proj4string(lanceolata_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(lanceolata_shp, ad=TRUE)
-shapefile(lanceolata_shp, 'lanceolata.shp')
+shapefile(lanceolata_shp, 'lanceolata.shp', overwrite = TRUE)
 
 mandonii <- read_xlsx('mandonii.xlsx')
 xy <- mandonii[,4:5]
@@ -234,7 +278,7 @@ proj4string(mandonii_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(mandonii_shp, ad=TRUE)
-shapefile(mandonii_shp, 'mandonii.shp')
+shapefile(mandonii_shp, 'mandonii.shp', overwrite = TRUE)
 
 mathewsii <- read_xlsx('mathewsii.xlsx')
 xy <- mathewsii[,4:5]
@@ -243,7 +287,7 @@ proj4string(mathewsii_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(mathewsii_shp, ad=TRUE)
-shapefile(mathewsii_shp, 'mathewsii.shp')
+shapefile(mathewsii_shp, 'mathewsii.shp', overwrite = TRUE)
 
 mixta <- read_xlsx('mixta.xlsx')
 xy <- mixta[,4:5]
@@ -252,7 +296,7 @@ proj4string(mixta_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(mixta_shp, ad=TRUE)
-shapefile(mixta_shp, 'mixta.shp')
+shapefile(mixta_shp, 'mixta.shp', overwrite = TRUE)
 
 nueva <- read_xlsx('nueva.xlsx')
 xy <- nueva [,4:5]
@@ -261,7 +305,7 @@ proj4string(nueva_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(nueva_shp, ad=TRUE)
-shapefile(nueva_shp, 'nueva.shp')
+shapefile(nueva_shp, 'nueva.shp', overwrite = TRUE)
 
 parvifolia <- read_xlsx('parvifolia.xlsx')
 xy <- parvifolia [,4:5]
@@ -270,7 +314,7 @@ proj4string(parvifolia_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(parvifolia_shp, ad=TRUE)
-shapefile(parvifolia_shp, 'parvifolia.shp')
+shapefile(parvifolia_shp, 'parvifolia.shp', overwrite = TRUE)
 
 peduncularis <- read_xlsx('peduncularis.xlsx')
 xy <- peduncularis [,4:5]
@@ -279,7 +323,7 @@ proj4string(peduncularis_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(peduncularis_shp, ad=TRUE)
-shapefile(peduncularis_shp, 'peduncularis.shp')
+shapefile(peduncularis_shp, 'peduncularis.shp', overwrite = TRUE)
 
 pinnatistipula <- read_xlsx('pinnatistipula.xlsx')
 xy <- pinnatistipula [,4:5]
@@ -288,7 +332,7 @@ proj4string(pinnatistipula_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(pinnatistipula_shp, ad=TRUE)
-shapefile(pinnatistipula_shp, 'pinnatistipula.shp')
+shapefile(pinnatistipula_shp, 'pinnatistipula.shp', overwrite = TRUE)
 
 runa <- read_xlsx('runa.xlsx')
 xy <- runa [,4:5]
@@ -297,7 +341,7 @@ proj4string(runa_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(runa_shp, ad=TRUE)
-shapefile(runa_shp, 'runa.shp')
+shapefile(runa_shp, 'runa.shp', overwrite = TRUE)
 
 salpoense <- read_xlsx('salpoense.xlsx')
 xy <- salpoense [,4:5]
@@ -306,7 +350,7 @@ proj4string(salpoense_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(salpoense_shp, ad=TRUE)
-shapefile(salpoense_shp, 'salpoense.shp')
+shapefile(salpoense_shp, 'salpoense.shp', overwrite = TRUE)
 
 tarminiana <- read_xlsx('tarminiana.xlsx')
 xy <- tarminiana [,4:5]
@@ -315,7 +359,7 @@ proj4string(tarminiana_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(tarminiana_shp, ad=TRUE)
-shapefile(tarminiana_shp, 'tarminiana.shp')
+shapefile(tarminiana_shp, 'tarminiana.shp', overwrite = TRUE)
 
 trifoliata <- read_xlsx('trifoliata.xlsx')
 xy <- trifoliata [,4:5]
@@ -324,7 +368,7 @@ proj4string(trifoliata_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(trifoliata_shp, ad=TRUE)
-shapefile(trifoliata_shp, 'trifoliata.shp')
+shapefile(trifoliata_shp, 'trifoliata.shp', overwrite = TRUE)
 
 tripartita <- read_xlsx('tripartita.xlsx')
 xy <- tripartita [,4:5]
@@ -333,7 +377,7 @@ proj4string(tripartita_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(tripartita_shp, ad=TRUE)
-shapefile(tripartita_shp, 'tripartita.shp')
+shapefile(tripartita_shp, 'tripartita.shp', overwrite = TRUE)
 
 trisecta <- read_xlsx('trisecta.xlsx')
 xy <- trisecta [,4:5]
@@ -342,7 +386,7 @@ proj4string(trisecta_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(trisecta_shp, ad=TRUE)
-shapefile(trisecta_shp, 'trisecta.shp')
+shapefile(trisecta_shp, 'trisecta.shp', overwrite = TRUE)
 
 weberbaueri <- read_xlsx('weberbaueri.xlsx')
 xy <- weberbaueri [,4:5]
@@ -351,7 +395,7 @@ proj4string(weberbaueri_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(weberbaueri_shp, ad=TRUE)
-shapefile(weberbaueri_shp, 'weberbaueri.shp')
+shapefile(weberbaueri_shp, 'weberbaueri.shp', overwrite = TRUE)
 
 weigendii <- read_xlsx('weigendii.xlsx')
 xy <- weigendii [,4:5]
@@ -360,7 +404,7 @@ proj4string(weigendii_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(weigendii_shp, ad=TRUE)
-shapefile(weigendii_shp, 'weigendii.shp')
+shapefile(weigendii_shp, 'weigendii.shp', overwrite = TRUE)
 
 xrosea <- read_xlsx('xrosea.xlsx')
 xy <- xrosea [,4:5]
@@ -369,45 +413,310 @@ proj4string(xrosea_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
 PERU <- shapefile('PER_adm1.shp')
 plot(PERU)
 plot(xrosea_shp, ad=TRUE)
-shapefile(xrosea_shp, 'xrosea.shp')
+shapefile(xrosea_shp, 'xrosea.shp', overwrite = TRUE)
+
+manicata <- read_xlsx('manicata.xlsx')
+xy <- manicata [,4:5]
+manicata_shp <- SpatialPointsDataFrame(coords = xy, data = manicata)
+proj4string(manicata_shp) = CRS('+proj=longlat + datum=WGS84 +no_defs')
+PERU <- shapefile('PER_adm1.shp')
+plot(PERU)
+plot(manicata_shp, ad=TRUE)
+shapefile(manicata_shp, 'manicata.shp', overwrite = TRUE)
 
 
 ```
 ## Ahora visualizaremos mejor los mapas de ocurrencia con cada shapefile creados previamente
-```{bash}
-huamachucoensis_sf <- huamachucoensis %>% st_as_sf(coords = c(4,5), crs = 4326)
-amazonica_sf <- amazonica %>% st_as_sf(coords = c(4,5), crs = 4326)
+```{r}
+huamachucoensis_sf <- huamachucoensis %>% st_as_sf(coords = c(4,5), crs = 4326) 
+amazonica_sf <- amazonica %>% st_as_sf(coords = c(4,5), crs = 4326) 
 anastomosans_sf <- anastomosans %>% st_as_sf(coords = c(4,5), crs = 4326)
-cumbalensis_sf <- cumbalensis %>% st_as_sf(coords = c(4,5), crs = 4326)
-glaberrima_sf <- glaberrima %>% st_as_sf(coords = c(4,5), crs = 4326)
-gracilens_sf <- gracilens %>% st_as_sf(coords = c(4,5), crs = 4326)
-kuethiana_sf <- kuethiana %>% st_as_sf(coords = c(4,5), crs = 4326)
-lanceolata_sf <- lanceolata %>% st_as_sf(coords = c(4,5), crs = 4326)
-mandonii_sf <- mandonii %>% st_as_sf(coords = c(4,5), crs = 4326)
-manicata_sf <- manicata %>% st_as_sf(coords = c(4,5), crs = 4326)
-mathewsii_sf <- mathewsii %>% st_as_sf(coords = c(4,5), crs = 4326)
-mixta_sf <- mixta %>% st_as_sf(coords = c(4,5), crs = 4326)
-nueva_sf <- nueva %>% st_as_sf(coords = c(4,5), crs = 4326)
-parvifolia_sf <- parvifolia %>% st_as_sf(coords = c(4,5), crs = 4326)
+cumbalensis_sf <- cumbalensis %>% st_as_sf(coords = c(4,5), crs = 4326) 
+glaberrima_sf <- glaberrima %>% st_as_sf(coords = c(4,5), crs = 4326) 
+gracilens_sf <- gracilens %>% st_as_sf(coords = c(4,5), crs = 4326) 
+kuethiana_sf <- kuethiana %>% st_as_sf(coords = c(4,5), crs = 4326) 
+lanceolata_sf <- lanceolata %>% st_as_sf(coords = c(4,5), crs = 4326) 
+mandonii_sf <- mandonii %>% st_as_sf(coords = c(4,5), crs = 4326) 
+manicata_sf <- manicata %>% st_as_sf(coords = c(4,5), crs = 4326) 
+mathewsii_sf <- mathewsii %>% st_as_sf(coords = c(4,5), crs = 4326) 
+mixta_sf <- mixta %>% st_as_sf(coords = c(4,5), crs = 4326) 
+nueva_sf <- nueva %>% st_as_sf(coords = c(4,5), crs = 4326) 
+parvifolia_sf <- parvifolia %>% st_as_sf(coords = c(4,5), crs = 4326) 
 peduncularis_sf <- peduncularis %>% st_as_sf(coords = c(4,5), crs = 4326)
-pinnatistipula_sf <- pinnatistipula %>% st_as_sf(coords = c(4,5), crs = 4326)
-runa_sf <- runa %>% st_as_sf(coords = c(4,5), crs = 4326)
-salpoense_sf <- salpoense %>% st_as_sf(coords = c(4,5), crs = 4326)
+pinnatistipula_sf <- pinnatistipula %>% st_as_sf(coords = c(4,5), crs = 4326) 
+runa_sf <- runa %>% st_as_sf(coords = c(4,5), crs = 4326) 
+salpoense_sf <- salpoense %>% st_as_sf(coords = c(4,5), crs = 4326) 
 tarminiana_sf <- tarminiana %>% st_as_sf(coords = c(4,5), crs = 4326)
-trifoliata_sf <- trifoliata %>% st_as_sf(coords = c(4,5), crs = 4326)
-tripartita_sf <- tripartita %>% st_as_sf(coords = c(4,5), crs = 4326)
-trisecta_sf <- trisecta %>% st_as_sf(coords = c(4,5), crs = 4326)
-weberbaueri_sf <- weberbaueri %>% st_as_sf(coords = c(4,5), crs = 4326)
-weigendii_sf <- weigendii %>% st_as_sf(coords = c(4,5), crs = 4326)
+trifoliata_sf <- trifoliata %>% st_as_sf(coords = c(4,5), crs = 4326) 
+tripartita_sf <- tripartita %>% st_as_sf(coords = c(4,5), crs = 4326) 
+trisecta_sf <- trisecta %>% st_as_sf(coords = c(4,5), crs = 4326) 
+weberbaueri_sf <- weberbaueri %>% st_as_sf(coords = c(4,5), crs = 4326) 
+weigendii_sf <- weigendii %>% st_as_sf(coords = c(4,5), crs = 4326) 
 xrosea_sf <- xrosea %>% st_as_sf(coords = c(4,5), crs = 4326)
 
+ggplot() + 
+  geom_sf(data = huamachucoensis_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = xrosea_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+
+ggplot() + 
+  geom_sf(data = amazonica_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = anastomosans_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = cumbalensis_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = glaberrima_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = gracilens_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = kuethiana_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = lanceolata_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = mandonii_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = manicata_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = mathewsii_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = mixta_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = nueva_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = parvifolia_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = peduncularis_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = pinnatistipula_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = runa_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = salpoense_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = tarminiana_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = trifoliata_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = tripartita_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = trisecta_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = weberbaueri_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = weigendii_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+ggplot() + 
+  geom_sf(data = xrosea_sf, aes(color = ELEVA)) +
+  scale_color_viridis_c()
+
+```
+
+##vamos a crear shapefile de cada especie para las variables climáticas bio
+```{r}
+huamachucoensis_bio <- huamachucoensis_ambiente %>% dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)  
+  writexl::write_xlsx(huamachucoensis_bio, "huamachucoensis_bio.xlsx")
+
+#nueva_bio <- ambiente %>% 
+ # dplyr::filter(scientific_name == "Passiflora nueva")%>% 
+#  dplyr::select(bio01, bio02, bio03, bio04, bio05, bio06, bio07, bio10, bio11, bio12, bio13, bio14, bio15, bio16, bio17)
+#writexl::write_xlsx(nueva_bio, "nueva_bio.xlsx")
+
+amazonica_bio <- amazonica_ambiente %>%
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)  
+writexl::write_xlsx(amazonica_bio, "amazonica_bio.xlsx")
+
+anastomosans_bio <- anastomosans_ambiente %>% 
+ dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(anastomosans_bio, "anastomosans_bio.xlsx")
+
+cumbalensis_bio <- cumbalensis_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(cumbalensis_bio, "cumbalensis_bio.xlsx")
+
+glaberrima_bio <- glaberrima_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(glaberrima_bio, "glaberrima_bio.xlsx")
+
+gracilens_bio <- gracilens_ambiente %>% 
+ dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(gracilens_bio, "gracilens_bio.xlsx")
+
+#kuethiana_bio <- ambiente %>% 
+ # dplyr::filter(scientific_name == "Passiflora kuethiana")%>% 
+  #dplyr::select(bio01, bio02, bio03, bio04, bio05, bio06, bio07, bio10, bio11, bio12, bio13, bio14, bio15, bio16, bio17)
+#writexl::write_xlsx(kuethiana_bio, "kuethiana_bio.xlsx")
+
+#lanceolata_bio <- ambiente %>% 
+ # dplyr::filter(scientific_name == "Passiflora lanceolata")%>% 
+  #dplyr::select(bio01, bio02, bio03, bio04, bio05, bio06, bio07, bio10, bio11, bio12, bio13, bio14, bio15, bio16, bio17)
+#writexl::write_xlsx(lanceolata_bio, "lanceolata_bio.xlsx")
+
+#mandonii_bio <- ambiente %>% 
+ # dplyr::filter(scientific_name == "Passiflora mandonii")%>% 
+  #dplyr::select(bio01, bio02, bio03, bio04, bio05, bio06, bio07, bio10, bio11, bio12, bio13, bio14, bio15, bio16, bio17)
+#writexl::write_xlsx(mandonii_bio, "mandonii_bio.xlsx")
+
+manicata_bio <- manicata_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(manicata_bio, "manicata_bio.xlsx")
+
+mathewsii_bio <- mathewsii_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(mathewsii_bio, "mathewsii_bio.xlsx")
+
+mixta_bio <- mixta_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(mixta_bio, "mixta_bio.xlsx")
+
+parvifolia_bio <- parvifolia_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(parvifolia_bio, "parvifolia_bio.xlsx")
+
+peduncularis_bio <- peduncularis_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(peduncularis_bio, "peduncularis_bio.xlsx")
+
+pinnatistipula_bio <- pinnatistipula_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(pinnatistipula_bio, "pinnatistipula_bio.xlsx")
+
+#runa_bio <- ambiente %>% 
+ # dplyr::filter(scientific_name == "Passiflora runa")%>% 
+  #dplyr::select(bio01, bio02, bio03, bio04, bio05, bio06, bio07, bio10, bio11, bio12, bio13, bio14, bio15, bio16, bio17)
+#writexl::write_xlsx(runa_bio, "runa_bio.xlsx")
+
+#salpoense_bio <- ambiente %>% 
+ # dplyr::filter(scientific_name == "Passiflora salpoense")%>% 
+  #dplyr::select(bio01, bio02, bio03, bio04, bio05, bio06, bio07, bio10, bio11, bio12, bio13, bio14, bio15, bio16, bio17)
+#writexl::write_xlsx(salpoense_bio, "salpoense_bio.xlsx")
+
+tarminiana_bio <- tarminiana_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(tarminiana_bio, "tarminiana_bio.xlsx")
+
+trifoliata_bio <- trifoliata_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15) 
+writexl::write_xlsx(trifoliata_bio, "trifoliata_bio.xlsx")
+
+tripartita_bio <- tripartita_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15) 
+writexl::write_xlsx(tripartita_bio, "tripartita_bio.xlsx")
+
+trisecta_bio <- trisecta_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15) 
+writexl::write_xlsx(trisecta_bio, "trisecta_bio.xlsx")
+
+weberbaueri_bio <- weberbaueri_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(weberbaueri_bio, "weberbaueri_bio.xlsx")
+
+weigendii_bio <- weigendii_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(weigendii_bio, "weigendii_bio.xlsx")
+
+xrosea_bio <- xrosea_ambiente %>% 
+  dplyr::select(occID, longitude, latitude, cells, bio01, bio02, bio03, bio04, bio12, bio15)
+writexl::write_xlsx(xrosea_bio, "xrosea_bio.xlsx")
+
+
+```
+## Ahora vamos a hacer variogramas para las bio1 y bio12
+```{r}
+huamachucoensis_bio <- read_xlsx('huamachucoensis_bio.xlsx')
+coordinates(huamachucoensis_bio) <- ~longitude + latitude
+proj4string(huamachucoensis_bio) = CRS("+init=epsg:4326")
+
+v_huamachucoensis_null <- variogram(log(bio01) ~1, data = huamachucoensis_bio) %>% mutate(Modelo = 'Nulo')
+
+v_huamachucoensis_espacial <- variogram(log(bio01) ~ longitude + latitude, data = huamachucoensis_bio) %>% mutate(Modelo = 'Espacial')
+
+v_huamachucoensis_plot <- rbind(v_huamachucoensis_null, v_huamachucoensis_espacial)
+
+ggplot(v_huamachucoensis_plot, aes(x = dist, y = gamma, color = Modelo)) + geom_path()+ geom_point() + theme_bw()
+
+v_huamachucoensis_fit_espaci <- fit.variogram(v_huamachucoensis_espacial,model = vgm(1, "Sph", 700, 1))
+v_huamachucoensis_fit_null <- fit.variogram(v_huamachucoensis_null, model = vgm(1, "Sph", 
+    700, 1))
+
+
+ggplot(v_huamachucoensis_espacial, aes(x = dist, y = gamma, color = Modelo))+ geom_point() + geom_hline(yintercept = 1.0000000 + 0.9999842, lty = 2) +
+  geom_vline(xintercept = 699.9889, lty = 2) +
+  theme_bw()
+
+
+#v_huamachucoensis_sqrt <- variogram(log(bio01) ~sqrt(dist), huamachucoensis_bio) %>% 
+   # mutate(Modelo = "sqrt(dist)")
+
+#v_huamachucoensis_distancia2 <- variogram(log(bio12) ~ dist.m, data = huamachucoensis_bio) %>% mutate(Modelo = 'Distancia')
+
+v_huamachucoensis_null2 <- variogram(log(bio12) ~1, data = huamachucoensis_bio) %>% mutate(Modelo = 'Nulo')
+
+v_huamachucoensis_espacial2 <- variogram(log(bio12) ~ longitude + latitude, data = huamachucoensis_bio) %>% mutate(Modelo = 'Espacial')
+
+#v_huamachucoensis_distancia <- variogram(log(bio01) ~ dist.m, data = huamachucoensis_bio) %>% mutate(Modelo = 'Distancia')
+
+plot(v_huamachucoensis_null2)
+plot(v_huamachucoensis_espacial2, ad=TRUE)
+
+v_huamachucoensis <- variogram(log(bio01) ~1, data = huamachucoensis_bio2)
+plot(v_huamachucoensis)
+
 ```
 
 
 
+
 ```
-
-
 
 ## GitHub Documents
 
